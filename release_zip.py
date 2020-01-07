@@ -6,11 +6,11 @@ if __name__ == "__main__":
         print(
             """
         Usage:
-        
+
             build_zips.py <assign>
-            
+
         Zips up the assignment folder in release/<assign> and puts it in uploads/<assign.zip>
-        
+
         """
         )
         exit(-1)

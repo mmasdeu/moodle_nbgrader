@@ -2,33 +2,33 @@ import nbgrader, csv, codecs, sys, os, shutil
 from nbgrader.apps import NbGraderAPI
 import zipfile
 verbose = False
+from i18n import *
+
 def zip(out, root):
     shutil.make_archive(out, 'zip', root)
 
-def moodle_gradesheet(assignment, with_feedback=True):    
-    
+def moodle_gradesheet(assignment, with_feedback=True):
+
     api = NbGraderAPI()
-    gradebook = api.gradebook        
+    gradebook = api.gradebook
     csvfile = os.path.join("imports", assignment+".csv")
     with open(csvfile, newline='', encoding='utf-8-sig') as f:
-        reader = csv.DictReader(f) 
-    
+        reader = csv.DictReader(f)
+
         fname =  os.path.join("exports", assignment+".csv")
-        
+
         if with_feedback:
             archive = zipfile.ZipFile(os.path.join("exports", "feedback_"+assignment+".zip"), 'w', zipfile.ZIP_DEFLATED)
-                
-        
         with open(fname, 'w', encoding='utf-8', newline='') as out:
             writer = csv.DictWriter(out, reader.fieldnames)
             writer.writeheader()
-            for line in reader:        
-                email, ident, fullname, status, grade, max_grade = line["Email address"], line['Identifier'], line['Full name'], line['Status'], line['Grade'], line['Maximum Grade']                        
+            for line in reader:
+                email, ident, fullname, status, grade, max_grade = line[email_str], line[ident_str], line[fullname_str], line[status_str], line[grade_str], line[max_grade_str]
                 unique_id = email[0:7]
                 try:
-                    submission = gradebook.find_submission(assignment, unique_id)                
+                    submission = gradebook.find_submission(assignment, unique_id)
                 except:
-                    if "Submitted" in status:
+                    if submitted_str in status:
                         print("WARNING: No submission for {id} in assignment {assign}".format(id=unique_id ,assign=assignment))
                     else:
                         if verbose:
@@ -59,17 +59,17 @@ def moodle_gradesheet(assignment, with_feedback=True):
                         fullname=fullname, assign=assignment))
                         # no feedback to generate
                 
-                    line['Grade'] = submission.score
+                    line[grade_str] = submission.score
 
                     # warn about dubious scores
-                    if line['Grade']<=0 or line['Grade']>submission.max_score:
-                        print("Warning: {matric} {name} has a score of {grade}".format(matric=unique_id,
-                        name=fullname, grade=line['Grade']))
+                    grade_int = 0 if line[grade_str] == '' else int(line[grade_str])
+                    if grade_int <=0 or grade_int > submission.max_score:
+                        print("Warning: {matric} {name} has a score of {grade}".format(matric=unique_id, name=fullname, grade=grade_int))
 
                     # correct the maximum grade
-                    line['Maximum Grade'] = submission.max_score
+                    line[max_grade_str] = str(submission.max_score)
                     writer.writerow(line)
-                
+
             print("Wrote to {0}".format(fname))
 
             # tidy up the feedback file

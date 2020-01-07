@@ -2,15 +2,15 @@ import os
 import re
 import nbgrader, csv, codecs, sys, os, shutil
 from nbgrader.apps import NbGraderAPI
-import zipfile  
+import zipfile
 import shutil
+from i18n import *
 verbose = False
 
-def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):        
+def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
 
-    api = NbGraderAPI()    
+    api = NbGraderAPI()
     gradebook = api.gradebook
-    
 
     archive = zipfile.ZipFile(zip)
     fnames = {}
@@ -32,13 +32,11 @@ def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
         successful_files = 0
         missing_files = 0
         problem_files = 0
-            
-        for line in reader:        
-            
-            ident, fullname,email, status,  grade, max_grade = (line['Identifier'], line['Full name'], line["Email address"], 
-                                                                line['Status'], line['Grade'], line['Maximum Grade'])
 
-            should_be_submission =  "Submitted" in status
+        for line in reader:
+            ident, fullname,email, status,  grade, max_grade = (line[ident_str], line[fullname_str], line[email_str], line[status_str], line[grade_str], line[max_grade_str])
+
+            should_be_submission =  submitted_str in status
 
             # make sure we have this student in our records
             unique_id = email[0:7]
@@ -48,19 +46,18 @@ def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
                 print("Creating gradebook entry for ", unique_id)
                 gradebook.update_or_create_student(unique_id, first_name=fullname, last_name="", email=email)
 
-                
             # map assignment numbers to matric numbers
             matric = email[0:7]
-            match = re.match('Participant ([0-9]+)', ident)
+            match = re.match('Participant([0-9]+)', ident)
             if not match:
                 print(f"Could not find identity for participant {ident}")
                 continue
-            
+
             ident = match.groups()[0]
             assign_matric[ident] = matric
-            
+
             n_rows += 1
-            if ident in fnames:                
+            if ident in fnames:
                 # extract each file to the submission directory
                 submission_path = os.path.join("submitted", matric, assign_name)
                 try:
@@ -77,7 +74,7 @@ def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
                 target = open(os.path.join(submission_path, notebook_file), "wb")
                 with source, target:
                     shutil.copyfileobj(source, target)
-                
+
                 successful_files += 1
             else:
                 # submission was in the CSV file, but we don't have a zip file
@@ -98,17 +95,15 @@ def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
 """.format(n_files=successful_files, missing=missing_files, problem=problem_files,
 total=successful_files+missing_files+problem_files,
 total_zip = len(fnames), total_csv=n_rows))
-            
 
-    
 import sys
 
 if len(sys.argv)!=3:
     print("""
         Usage:
-        
+
         collect_files.py <assignment> <notebook_name>
-        
+
         # must have the following files in imports/
 
             <assignment>.csv <assignment>.zip
