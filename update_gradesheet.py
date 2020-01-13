@@ -39,26 +39,18 @@ def moodle_gradesheet(assignment, with_feedback=True):
 
 
                     fbk_path = os.path.join("feedback", unique_id, assignment)
-                    
-                    try:                    
-                        
+                    try:
                         files = [os.path.join(fbk_path, f) for f in os.listdir(fbk_path) if f.endswith('.html')]
-                        
-                        assign_id = ident[-7:]
-                        # remove asterisks
-                        name = 'blank'
-                        
+                        assign_id = ident[-6:]
+
                         # create the path to the feedback file
-                        fbk_full_path = "{fullname}_{assign_id}_assignsubmission_file_".format(fullname=name, 
-                            assign_id=assign_id)
+                        fbk_full_path = "{fullname}_{assign_id}_assignsubmission_file_".format(fullname=fullname, assign_id=assign_id)
                         for f in files:
                             archive.write(f, arcname=os.path.join(fbk_full_path, os.path.basename(f)))
-                        
                     except FileNotFoundError:
                         print("HTML feedback file for {fullname} {id} {assign} is missing".format(id=unique_id,
                         fullname=fullname, assign=assignment))
                         # no feedback to generate
-                
                     line[grade_str] = submission.score
 
                     # warn about dubious scores

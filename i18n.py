@@ -14,4 +14,4 @@ email_str = 'Número ID'
 status_str = 'Estat'
 grade_str = 'Qualificació'
 max_grade_str = 'Qualificació màxima'
-submitted_str = 'Submitted'
+submitted_str = "S'ha tramès"

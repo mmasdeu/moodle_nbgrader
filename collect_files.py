@@ -5,7 +5,7 @@ from nbgrader.apps import NbGraderAPI
 import zipfile
 import shutil
 from i18n import *
-verbose = False
+verbose = True
 
 def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
 
@@ -19,15 +19,15 @@ def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
     # ids for each filename
     for f in archive.filelist:
         fname = f.filename
-        match = re.match("[\*\w\-\'\s\.]+_([0-9]+)_.*", fname)
+        match = re.match("[\*\w\-\'\s\.]+_([0-9]+)_assignsubmission_file_.*", fname)
         if match:
             fnames[match.groups()[0]] = fname
         else:
             print("Did not match ", fname)
 
     with open(csvfile, newline='', encoding='utf-8-sig') as f:
-        reader = csv.DictReader(f) 
-        assign_matric = {} 
+        reader = csv.DictReader(f)
+        assign_matric = {}
         n_rows = 0
         successful_files = 0
         missing_files = 0
@@ -80,6 +80,7 @@ def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
                 # submission was in the CSV file, but we don't have a zip file
                 if should_be_submission:
                     print("*** WARNING! No submission for", fullname, matric, "but submission status was", status, "***")
+                    print("    Ident = %s"%ident)
                     problem_files += 1
                 else:
                     # submission was not listed in the CSV file as being submitted
