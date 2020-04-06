@@ -1,6 +1,8 @@
-# Funcionament de nbgrader i moodle_nbgrader per correcció automàtica de notebooks de Jupyter.
+# Funcionament de nbgrader i moodle_nbgrader.
 
-Adaptat a la UAB - Universitat Autònoma de Barcelona.
+Per per correcció automàtica de notebooks de Jupyter. Adaptat a la Universitat Autònoma de Barcelona (UAB).
+
+Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en/stable/user_guide/installation.html> i de <https://github.com/johnhw/moodle_nbgrader>.
 
 ## Instal·lació (només la primera vegada)
 
