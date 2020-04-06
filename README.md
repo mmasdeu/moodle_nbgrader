@@ -57,11 +57,11 @@ Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
    
 3. Editem el fitxer `source/header.ipynb`, si volem.
 4. Cliquem la pestanya *Formgrader* que ha aparegut.
-5. Cliquem "+ Add new assignment..." (**No feu servir espais!**)
+5. Cliquem *+ Add new assignment...* (**No feu servir espais al nom!**)
 6. Cliquem el llapis *Edit*
-7. Cliquem el nom  (a la columna "*ame*)
+7. Cliquem el nom  (a la columna *Name*)
 
-Es poden afegir nous fitxers de sage. Cal anar a View -> Cell Toolbar -> Create Assignment
+Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create Assignment*
 
 8. Cliquem el botó per Generar la tasca: *Generate*.
 9. El podem veure clicant a *Preview*.
