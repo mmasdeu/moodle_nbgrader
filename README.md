@@ -1,45 +1,93 @@
+# Funcionament de nbgrader i moodle_nbgrader per correcció automàtica de notebooks de Jupyter.
 
+Adaptat a la UAB - Universitat Autònoma de Barcelona.
 
-## Submissions
-Assuming you have an assignment called `<assignment>` (e.g. `week_2_numerical_ii`)
+## Instal·lació de NBGrader
+  ```
+  $ sage -pip install --user nbgrader
+  $ sage -jupyter nbextension install --user --py nbgrader --overwrite
+  $ sage -jupyter nbextension enable --user --py nbgrader
+  $ sage -jupyter serverextension enable --user --py nbgrader
+  ```
 
-1. From Moodle, select assignment
-2. `View All Submissions`
-3. `Reveal student identities`
-4. Choose `Download All Submissions` from top dropdown (MAKE SURE `Download submissions in folders` is OFF)
-5. Copy archive to `imports/<assignment>.zip`
-6. Choose `Download grading worksheet`
-5. Copy CSV to `imports/<assignment>.csv`
+**Nota:** si es vol, es pot desinstalar l'extensió que ho fa tot més automàtic (que jo no faig servir):
 
-        python collect_files.py <assignment> <workbook_name>
+  1. Desactivem *Assignment List*
 
-Example:
+  ```
+  $ sage -jupyter nbextension disable --user assignment_list/main --section=tree
+  $ sage -jupyter serverextension disable --user nbgrader.server_extensions.assignment_list
+  ```
 
-        python collect_files.py week_2_numerical_ii lab_2
-    
+  2. Desactivem *Course List*
 
-Run:
+  ```
+  $ sage -jupyter nbextension disable --user course_list/main --section=tree
+  $ sage -jupyter serverextension disable --user nbgrader.server_extensions.course_list
+  ```
 
-        nbgrader autograde <assignment>
+## Instal·lació de moodle_nbgrader
 
-to grade the files
+1. Descarreguem els scripts:
 
-Then run:
+  `$ git clone https://github.com/mmasdeu/moodle_nbgrader.git ~/moodle_nbgrader`
 
-        python update_gradesheet.py <assignment>
+## Creació d'una tasca
 
-This will produce:
-* `exports/<assignment>.csv` for upload as `Upload grading worksheet` 
-* `exports/<assignment>_feedback.zip` for upload as `Upload multiple feedback files as zip`
+1. Anem a la carpeta on volem mantenir les diferents entregues, i hi copiem el fitxer inicial de configuració, adaptat a la UAB.
 
+   ```
+   $ mkdir -p ~/AlgebraLineal
+   $ cd ~/AlgebraLineal
+   $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/nbgrader_configy.py
+   $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/header.ipynb -P source/
+   ```
 
-## Creating assignments
-1. in Moodle, enable offline gradebook and feedback files in the assignment
-1. Create assignment in formgrader
-2. Edit assignment and validate
-3. Hit "Generate" in formgrader
-4. Or use `nbgrader assign <assignment> --force`
-5. `python release_zip.py <assignment>` to generate the zip file in `uploads`
+2. Creem la configuració inicial
 
+   ```
+   $ ~/.local/bin/nbgrader generate_config
+   $ sage -n jupyter` (s'obre una finestra/pestanya al navegador)
+   ```
+   
+3. Editem el fitxer `source/header.ipynb`, si volem.
+4. Cliquem la pestanya *Formgrader* que ha aparegut.
+5. Cliquem "+ Add new assignment..." (**No feu servir espais!**)
+6. Cliquem el llapis *Edit*
+7. Cliquem el nom  (a la columna "*ame*)
 
+Es poden afegir nous fitxers de sage. Cal anar a View -> Cell Toolbar -> Create Assignment
 
+8. Cliquem el botó per Generar la tasca: *Generate*.
+9. El podem veure clicant a *Preview*.
+10. Podem penjar al Moodle el fitxer resultant, que trobarem a la carpeta `releases/`.
+
+## Correcció de la tasca amb moodle_nbgrader
+
+1. Al Campus Virtual, cliquem a *Visualitza totes les trameses*.
+2. *Acció de qualificar* -> *Descarrega totes les trameses*.
+3. També hem de baixar el full de qualificacions: *Descarrega el full de càlcul per qualificar*.
+4. Copiem l'arxiu .zip i el full a `imports/`:
+
+   ```
+   $ cp tasca.zip ~/AlgebraLineal/imports/Examen.zip
+   $ cp full.csv ~/AlgebraLineal/imports/Examen.csv
+   ```
+   
+5. Generem els fitxers per evaluar (suposem que el worksheet es diu `Worksheet1.ipynb`)
+
+   `$ python ~/moodle_nbgrader/collect_files.py Examen Worksheet1`
+
+6. Ara podem fer l'avaluació automàtica:
+
+   `$ ~/.local/bin/nbgrader autograde Examen`
+
+7. Si cal, des de la interfície web fem la part manual de la correcció.
+8. Generem el fitxer de notes i el de retroacció:
+
+   `$ python ~/moodle_nbgrader/update_gradesheet.py Examen`
+
+9. A la carpeta `exports/` hi trobarem els fitxers:
+
+    - exports/Examen.csv -> Per pujar com *Puja un full de qualificació*.
+    - exports/Examen_feedback.zip -> Per pujar com *Penja múltiples fitxers de retroacció en un zip*.
