@@ -6,7 +6,7 @@ Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en
 
 ## Instal·lació (només la primera vegada)
 
-# Instal·lació de NBGrader
+### Instal·lació de NBGrader
 
   ```
   $ sage -pip install --user nbgrader
@@ -31,7 +31,7 @@ Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en
   $ sage -jupyter serverextension disable --user nbgrader.server_extensions.course_list
   ```
 
-# Instal·lació de moodle_nbgrader
+### Instal·lació de moodle_nbgrader
 
 Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
 
