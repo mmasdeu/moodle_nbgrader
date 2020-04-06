@@ -2,7 +2,10 @@
 
 Adaptat a la UAB - Universitat Autònoma de Barcelona.
 
-## Instal·lació de NBGrader
+## Instal·lació (només la primera vegada)
+
+# Instal·lació de NBGrader
+
   ```
   $ sage -pip install --user nbgrader
   $ sage -jupyter nbextension install --user --py nbgrader --overwrite
@@ -26,7 +29,9 @@ Adaptat a la UAB - Universitat Autònoma de Barcelona.
   $ sage -jupyter serverextension disable --user nbgrader.server_extensions.course_list
   ```
 
-## Instal·lació de moodle_nbgrader
+# Instal·lació de moodle_nbgrader
+
+Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
 
 1. Descarreguem els scripts:
 
@@ -89,5 +94,5 @@ Es poden afegir nous fitxers de sage. Cal anar a View -> Cell Toolbar -> Create 
 
 9. A la carpeta `exports/` hi trobarem els fitxers:
 
-    - exports/Examen.csv -> Per pujar com *Puja un full de qualificació*.
-    - exports/Examen_feedback.zip -> Per pujar com *Penja múltiples fitxers de retroacció en un zip*.
+    - `exports/Examen.csv` -> Per pujar com *Puja un full de qualificació*.
+    - `exports/Examen_feedback.zip` -> Per pujar com *Penja múltiples fitxers de retroacció en un zip*.
