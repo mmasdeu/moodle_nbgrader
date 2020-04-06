@@ -77,6 +77,7 @@ Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create
 4. Copiem l'arxiu .zip i el full a `imports/`:
 
    ```
+   $ mkdir -p ~/AlgebraLineal/imports
    $ cp tasca.zip ~/AlgebraLineal/imports/Examen.zip
    $ cp full.csv ~/AlgebraLineal/imports/Examen.csv
    ```
@@ -92,7 +93,10 @@ Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create
 7. Si cal, des de la interfície web fem la part manual de la correcció.
 8. Generem el fitxer de notes i el de retroacció:
 
-   `$ python ~/moodle_nbgrader/update_gradesheet.py Examen`
+   ```
+   $ mkdir -p ~/AlgebraLineal/exports
+   $ python ~/moodle_nbgrader/update_gradesheet.py Examen
+   ```
 
 9. A la carpeta `exports/` hi trobarem els fitxers:
 
