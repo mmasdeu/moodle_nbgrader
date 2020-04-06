@@ -84,7 +84,7 @@ Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create
    
 5. Generem els fitxers per evaluar (suposem que el worksheet es diu `Worksheet1.ipynb`)
 
-   `$ python ~/moodle_nbgrader/collect_files.py Examen Worksheet1`
+   `$ sage -python ~/moodle_nbgrader/collect_files.py Examen Worksheet1`
 
 6. Ara podem fer l'avaluació automàtica:
 
@@ -95,7 +95,7 @@ Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create
 
    ```
    $ mkdir -p ~/AlgebraLineal/exports
-   $ python ~/moodle_nbgrader/update_gradesheet.py Examen
+   $ sage -python ~/moodle_nbgrader/update_gradesheet.py Examen
    ```
 
 9. A la carpeta `exports/` hi trobarem els fitxers:
