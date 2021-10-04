@@ -19,7 +19,7 @@ def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
     # ids for each filename
     for f in archive.filelist:
         fname = f.filename
-        match = re.match("[\*\w\-\'\s\.]+_([0-9]+)_assignsubmission_file_.*", fname)
+        match = re.match("[\*\w\-\ ,\'\s\.]+_([0-9]+)_assignsubmission_file_.*", fname)
         if match:
             fnames[match.groups()[0]] = fname
         else:

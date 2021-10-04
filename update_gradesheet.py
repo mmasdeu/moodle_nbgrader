@@ -3,6 +3,7 @@ from nbgrader.apps import NbGraderAPI
 import zipfile
 verbose = False
 from i18n import *
+import pdfkit
 
 def zip(out, root):
     shutil.make_archive(out, 'zip', root)
@@ -41,10 +42,11 @@ def moodle_gradesheet(assignment, with_feedback=True):
                     fbk_path = os.path.join("feedback", unique_id, assignment)
                     try:
                         files = [os.path.join(fbk_path, f) for f in os.listdir(fbk_path) if f.endswith('.html')]
-                        assign_id = ident[-6:]
+                        assign_id = ident[-4:] # DEBUG
 
                         # create the path to the feedback file
                         fbk_full_path = "{fullname}_{assign_id}_assignsubmission_file_".format(fullname=fullname, assign_id=assign_id)
+                        archive.write(files[0], arcname=fbk_full_path +".html")
                         for f in files:
                             archive.write(f, arcname=os.path.join(fbk_full_path, os.path.basename(f)))
                     except FileNotFoundError:
