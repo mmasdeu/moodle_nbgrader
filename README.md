@@ -51,7 +51,6 @@ Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
 2. Creem la configuració inicial, i hi copiem el fitxer inicial de configuració, adaptat a la UAB.
 
    ```
-   $ ~/.local/bin/nbgrader generate_config
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/nbgrader_config.py
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/header.ipynb -P source/   
    $ sage -n jupyter` (s'obre una finestra/pestanya al navegador)
