@@ -53,7 +53,7 @@ Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
    ```
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/nbgrader_config.py
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/header.ipynb -P source/   
-   $ sage -n jupyter` (s'obre una finestra/pestanya al navegador)
+   $ sage -n jupyter (s'obre una finestra/pestanya al navegador)
    ```
    
 3. Editem el fitxer `source/header.ipynb`, si volem.
