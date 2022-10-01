@@ -87,7 +87,7 @@ Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create
 
 6. Ara podem fer l'avaluació automàtica:
 
-   `$ ~/.local/bin/nbgrader autograde Examen`
+   `$ ~/.sage/local/bin/nbgrader autograde Examen`
 
 7. Si cal, des de la interfície web fem la part manual de la correcció.
 8. Generem el fitxer de notes i el de retroacció:
