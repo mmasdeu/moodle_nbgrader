@@ -9,7 +9,7 @@ Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en
 ### Instal·lació de NBGrader
 
   ```
-  $ sage -pip install --user nbgrader
+  $ sage -pip install --user nbgrader pdfkit
   $ sage -jupyter nbextension install --user --py nbgrader --overwrite
   $ sage -jupyter nbextension enable --user --py nbgrader
   $ sage -jupyter serverextension enable --user --py nbgrader
