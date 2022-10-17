@@ -81,13 +81,13 @@ Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create
    $ cp full.csv ~/AlgebraLineal/imports/Examen.csv
    ```
    
-5. Generem els fitxers per evaluar (suposem que el worksheet es diu `Worksheet1.ipynb`)
+5. Generem els fitxers per avaluar (suposem que el worksheet es diu `Worksheet1.ipynb`)
 
    `$ sage -python ~/moodle_nbgrader/collect_files.py Examen Worksheet1`
 
 6. Ara podem fer l'avaluació automàtica:
 
-   `$ ~/.sage/local/bin/nbgrader autograde Examen`
+   `$ sage -python ~/.sage/local/bin/nbgrader autograde Examen`
 
 7. Si cal, des de la interfície web fem la part manual de la correcció.
 8. Generem el fitxer de notes i el de retroacció:
