@@ -68,6 +68,12 @@ Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create
 9. El podem veure clicant a *Preview*.
 10. Podem penjar al Moodle el fitxer resultant, que trobarem a la carpeta `releases/`.
 
+### Avaluació de proves
+
+Podem avaluar una tasca per veure que funciona tal i com tenim previst. Per fer-ho, simplement cal
+crear un directori `~/AlgebraLineal/submitted/JohnSmith/Examen/` i posar-hi a dins el fitxer corresponent.
+L'avaluació automàtica es pot fer com en el pas 6 de la secció següent.
+
 ## Correcció de la tasca amb moodle_nbgrader
 
 1. Al Campus Virtual, cliquem a *Visualitza totes les trameses*.
