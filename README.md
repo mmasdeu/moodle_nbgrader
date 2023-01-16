@@ -77,33 +77,34 @@ L'avaluació automàtica es pot fer com en el pas 6 de la secció següent.
 ## Correcció de la tasca amb moodle_nbgrader
 
 1. Al Campus Virtual, cliquem a *Visualitza totes les trameses*.
-2. *Acció de qualificar* -> *Descarrega totes les trameses*.
-3. També hem de baixar el full de qualificacions: *Descarrega el full de càlcul per qualificar*.
-4. Copiem l'arxiu .zip i el full a `imports/`:
+2. *Acció de qualificar* -> *Descarrega totes les trameses*. Cal habilitar l'opció **Descarrega les trameses en carpetes**.
+3. Als *Paràmetres de la Tasca* hem d'habilitar, dins la secció *Tipus de retroacció* les caselles **Full de qualificació fora de línia** i **Fitxers de retroalimentació**, i desabilitar les altres dues (Comentaris de retroalimentació i PDF amb comentaris).
+4. També hem de baixar el full de qualificacions: *Descarrega el full de càlcul per qualificar*.
+5. Copiem l'arxiu .zip i el full a `imports/`:
 
    ```
    $ mkdir -p ~/AlgebraLineal/imports
    $ cp tasca.zip ~/AlgebraLineal/imports/Examen.zip
    $ cp full.csv ~/AlgebraLineal/imports/Examen.csv
    ```
-   
-5. Generem els fitxers per avaluar (suposem que el worksheet es diu `Worksheet1.ipynb`)
+
+6. Generem els fitxers per avaluar (suposem que el worksheet es diu `Worksheet1.ipynb`)
 
    `$ sage -python ~/moodle_nbgrader/collect_files.py Examen Worksheet1`
 
-6. Ara podem fer l'avaluació automàtica:
+7. Ara podem fer l'avaluació automàtica:
 
    `$ sage -python ~/.sage/local/bin/nbgrader autograde Examen`
 
-7. Si cal, des de la interfície web fem la part manual de la correcció.
-8. Generem el fitxer de notes i el de retroacció:
+8. Si cal, des de la interfície web fem la part manual de la correcció.
+9. Generem el fitxer de notes i el de retroacció:
 
    ```
    $ mkdir -p ~/AlgebraLineal/exports
    $ sage -python ~/moodle_nbgrader/update_gradesheet.py Examen
    ```
 
-9. A la carpeta `exports/` hi trobarem els fitxers:
+10. A la carpeta `exports/` hi trobarem els fitxers:
 
     - `exports/Examen.csv` -> Per pujar com *Puja un full de qualificació*.
     - `exports/Examen_feedback.zip` -> Per pujar com *Penja múltiples fitxers de retroacció en un zip*.
