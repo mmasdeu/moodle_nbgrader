@@ -51,6 +51,7 @@ def moodle_gradesheet(notebook_name, assign_name, csvfile, zip):
             match = re.match('Participant([0-9]+)', ident)
             if not match:
                 print(f"Could not find identity for participant {ident}")
+                print(f"\tFull name : {fullname}")
                 continue
 
             ident = match.groups()[0]
