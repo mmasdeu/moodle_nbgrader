@@ -46,7 +46,6 @@ def moodle_gradesheet(assignment, with_feedback=True):
 
                         # create the path to the feedback file
                         fbk_full_path = "{fullname}_{assign_id}_assignsubmission_file_".format(fullname=fullname, assign_id=assign_id)
-                        archive.write(files[0], arcname=fbk_full_path +".html")
                         for f in files:
                             archive.write(f, arcname=os.path.join(fbk_full_path, os.path.basename(f)))
                     except FileNotFoundError:
