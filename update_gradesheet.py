@@ -42,7 +42,7 @@ def moodle_gradesheet(assignment, with_feedback=True):
                     fbk_path = os.path.join("feedback", unique_id, assignment)
                     try:
                         files = [os.path.join(fbk_path, f) for f in os.listdir(fbk_path) if f.endswith('.html')]
-                        assign_id = ident[-4:] # DEBUG
+                        assign_id = ident[11:]
 
                         # create the path to the feedback file
                         fbk_full_path = "{fullname}_{assign_id}_assignsubmission_file_".format(fullname=fullname, assign_id=assign_id)
