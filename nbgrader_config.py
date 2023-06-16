@@ -1,12 +1,5 @@
 c = get_config()
 
-# Update this list with other assignments you want
-c.CourseDirectory.db_assignments = []
-
-# Change the students in this list with that actual students in
-# your course
-c.CourseDirectory.db_students = []
-
 c.IncludeHeaderFooter.header = "source/header.ipynb"
 
 # Configuration file for nbgrader-generate-config.

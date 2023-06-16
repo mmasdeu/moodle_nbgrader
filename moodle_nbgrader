@@ -5,7 +5,7 @@ import zipfile, fire, pdfkit
 from i18n import *
 verbose = True
 
-def collect(assign_name, notebook_name, csvfile=None, zipfname=None):
+def collect(assign_name, csvfile=None, zipfname=None):
     """
     Collects all the assignments from zip and csv files.
 
@@ -77,8 +77,7 @@ def collect(assign_name, notebook_name, csvfile=None, zipfname=None):
                 except:
                     pass
                 fname = fnames[ident]
-                notebook_file = os.path.basename(fname)
-                notebook_file = notebook_name+".ipynb"
+                notebook_file = os.listdir(os.path.join("release", assign_name))[0]
                 if verbose:
                     print("Extracting {notebook} to {path}".format(notebook=notebook_file, path=submission_path))
 
