@@ -52,10 +52,10 @@ Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
 
    ```
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/nbgrader_config.py
-   $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/header.ipynb -P source/   
+   $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/header.ipynb -P source/
    $ sage -n jupyter (s'obre una finestra/pestanya al navegador)
    ```
-   
+
 3. Editem el fitxer `source/header.ipynb`, si volem.
 4. Cliquem la pestanya *Formgrader* que ha aparegut.
 5. Cliquem *+ Add new assignment...* (**No feu servir espais al nom!**)
@@ -90,7 +90,7 @@ L'avaluació automàtica es pot fer com en el pas 6 de la secció següent.
 
 6. Generem els fitxers per avaluar (suposem que el worksheet es diu `Worksheet1.ipynb`)
 
-   `$ sage -python ~/moodle_nbgrader/collect_files.py Examen Worksheet1`
+   `$ sage -python ~/moodle_nbgrader/moodle_nbgrader collect Examen Worksheet1`
 
 7. Ara podem fer l'avaluació automàtica:
 
@@ -101,7 +101,7 @@ L'avaluació automàtica es pot fer com en el pas 6 de la secció següent.
 
    ```
    $ mkdir -p ~/AlgebraLineal/exports
-   $ sage -python ~/moodle_nbgrader/update_gradesheet.py Examen
+   $ sage -python ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
    ```
 
 10. A la carpeta `exports/` hi trobarem els fitxers:
