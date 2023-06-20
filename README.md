@@ -100,7 +100,6 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 9. Generem el fitxer de notes i el de retroacció:
 
    ```
-   $ mkdir -p ~/AlgebraLineal/exports
    $ sage -python ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
    ```
 
