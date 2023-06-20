@@ -90,7 +90,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 
 6. Generem els fitxers per avaluar
 
-   `$ sage -python ~/moodle_nbgrader/moodle_nbgrader collect Examen`
+   `$ ~/moodle_nbgrader/moodle_nbgrader collect Examen`
 
 7. Ara podem fer l'avaluació automàtica:
 
@@ -100,7 +100,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 9. Generem el fitxer de notes i el de retroacció:
 
    ```
-   $ sage -python ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
+   $ ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
    ```
 
 10. A la carpeta `exports/` hi trobarem els fitxers:
