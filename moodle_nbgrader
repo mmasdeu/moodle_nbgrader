@@ -123,6 +123,11 @@ def gradesheet(assignment, with_feedback=True):
     api = NbGraderAPI()
     gradebook = api.gradebook
     csvfile = os.path.join("imports", assignment+".csv")
+
+    try:
+        os.mkdir("exports")
+    except FileExistsError:
+        pass
     if verbose:
         print("Updating gradesheet for {0}...".format(assignment))
     with open(csvfile, newline='', encoding='utf-8-sig') as f:

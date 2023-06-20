@@ -72,7 +72,7 @@ Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create
 
 Podem avaluar una tasca per veure que funciona tal i com tenim previst. Per fer-ho, simplement cal
 crear un directori `~/AlgebraLineal/submitted/JohnSmith/Examen/` i posar-hi a dins el fitxer corresponent.
-L'avaluació automàtica es pot fer com en el pas 6 de la secció següent.
+L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 
 ## Correcció de la tasca amb moodle_nbgrader
 
@@ -88,9 +88,9 @@ L'avaluació automàtica es pot fer com en el pas 6 de la secció següent.
    $ cp full.csv ~/AlgebraLineal/imports/Examen.csv
    ```
 
-6. Generem els fitxers per avaluar (suposem que el worksheet es diu `Worksheet1.ipynb`)
+6. Generem els fitxers per avaluar
 
-   `$ sage -python ~/moodle_nbgrader/moodle_nbgrader collect Examen Worksheet1`
+   `$ sage -python ~/moodle_nbgrader/moodle_nbgrader collect Examen`
 
 7. Ara podem fer l'avaluació automàtica:
 
