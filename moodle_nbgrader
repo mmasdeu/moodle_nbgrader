@@ -77,7 +77,7 @@ def collect(assign_name, csvfile=None, zipfname=None):
                 except:
                     pass
                 fname = fnames[ident]
-                notebook_file = os.listdir(os.path.join("release", assign_name))[0]
+                notebook_file = next(ff for ff in os.listdir(os.path.join("release", assign_name)) if not ff.startswith('.'))
                 if verbose:
                     print("Extracting {notebook} to {path}".format(notebook=notebook_file, path=submission_path))
 
