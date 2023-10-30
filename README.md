@@ -8,11 +8,14 @@ Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en
 
 ### Instal·lació de NBGrader
 
+Cal fer servir el gestor de paquets del sistema, per instal·lar els paquests *Python*: `nbgrader`, `pdfkit` i `fire`.
+
+### Extensions de Jupyter necessàries
+
   ```
-  $ sage -pip install --user nbgrader pdfkit fire
-  $ sage -jupyter nbextension install --user --py nbgrader --overwrite
-  $ sage -jupyter nbextension enable --user --py nbgrader
-  $ sage -jupyter serverextension enable --user --py nbgrader
+  $ jupyter nbextension install --user --py nbgrader --overwrite
+  $ jupyter nbextension enable --user --py nbgrader
+  $ jupyter serverextension enable --user --py nbgrader
   ```
 
 **Nota:** si es vol, es pot desinstalar l'extensió que ho fa tot més automàtic (que jo no faig servir):
@@ -20,15 +23,15 @@ Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en
   1. Desactivem *Assignment List*
 
   ```
-  $ sage -jupyter nbextension disable --user assignment_list/main --section=tree
-  $ sage -jupyter serverextension disable --user nbgrader.server_extensions.assignment_list
+  $ jupyter nbextension disable --user assignment_list/main --section=tree
+  $ jupyter serverextension disable --user nbgrader.server_extensions.assignment_list
   ```
 
   2. Desactivem *Course List*
 
   ```
-  $ sage -jupyter nbextension disable --user course_list/main --section=tree
-  $ sage -jupyter serverextension disable --user nbgrader.server_extensions.course_list
+  $ jupyter nbextension disable --user course_list/main --section=tree
+  $ jupyter serverextension disable --user nbgrader.server_extensions.course_list
   ```
 
 ### Instal·lació de moodle_nbgrader
