@@ -100,13 +100,17 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
    `$ sage -python ~/.sage/local/bin/nbgrader autograde Examen`
 
 8. Si cal, des de la interfície web fem la part manual de la correcció.
-9. Generem el fitxer de notes i el de retroacció:
+9. Si no ho hem fet des de la interfícia web, podem generar els fitxers de retroacció amb la comanda següent:
+
+   `$ sage -python ~/.sage/local/bin/nbgrader generate_feedback Examen`
+   
+11. Generem el fitxer de notes i el *zip* amb la retroacció:
 
    ```
    $ ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
    ```
 
-10. A la carpeta `exports/` hi trobarem els fitxers:
+11. A la carpeta `exports/` hi trobarem els fitxers:
 
     - `exports/Examen.csv` -> Per pujar com *Puja un full de qualificació*.
     - `exports/Examen_feedback.zip` -> Per pujar com *Penja múltiples fitxers de retroacció en un zip*.
