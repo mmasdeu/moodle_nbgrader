@@ -8,31 +8,10 @@ Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en
 
 ### Instal·lació de NBGrader
 
-Cal fer servir el gestor de paquets del sistema, per instal·lar els paquests *Python*: `nbgrader`, `pdfkit` i `fire`.
-
-### Extensions de Jupyter necessàries
-
-  ```
-  $ jupyter nbextension install --user --py nbgrader --overwrite
-  $ jupyter nbextension enable --user --py nbgrader
-  $ jupyter serverextension enable --user --py nbgrader
-  ```
-
-**Nota:** si es vol, es pot desinstalar l'extensió que ho fa tot més automàtic (que jo no faig servir):
-
-  1. Desactivem *Assignment List*
-
-  ```
-  $ jupyter nbextension disable --user assignment_list/main --section=tree
-  $ jupyter serverextension disable --user nbgrader.server_extensions.assignment_list
-  ```
-
-  2. Desactivem *Course List*
-
-  ```
-  $ jupyter nbextension disable --user course_list/main --section=tree
-  $ jupyter serverextension disable --user nbgrader.server_extensions.course_list
-  ```
+Cal fer servir el gestor de paquets del sistema, per instal·lar els paquests *Python*: `nbgrader`, `pdfkit` i `fire`. Tambés es pot fer amb `conda` o `mamba`:
+```
+$ mamba install nbgrader
+```
 
 ### Instal·lació de moodle_nbgrader
 
@@ -97,12 +76,12 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 
 7. Ara podem fer l'avaluació automàtica:
 
-   `$ sage -python ~/.sage/local/bin/nbgrader autograde Examen`
+   `$ nbgrader autograde Examen`
 
 8. Si cal, des de la interfície web fem la part manual de la correcció.
 9. Si no ho hem fet des de la interfícia web, podem generar els fitxers de retroacció amb la comanda següent:
 
-   `$ sage -python ~/.sage/local/bin/nbgrader generate_feedback Examen`
+   `$ nbgrader generate_feedback Examen`
    
 11. Generem el fitxer de notes i el *zip* amb la retroacció:
 
