@@ -41,8 +41,8 @@ Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
 3. Editem el fitxer `source/header.ipynb`, si volem.
 4. Cliquem el menú *NBgrader -> Formgrader* que ha aparegut.
 5. Cliquem *+ Add new assignment...* (**No feu servir espais al nom!**)
-6. Cliquem el llapis *Edit*
-7. Cliquem el nom  (a la columna *Name*)
+6. Cliquem el llapis *Edit* per fixar el nom (la data d'entrega no es fa servir)
+7. Cliquem el nom  (a la columna *Name*), i afegim un document de Jupyter (New launcher + botó SageMath).
 
 Es poden afegir nous fitxers de Sage/Python. Cal anar a *View -> Cell Toolbar -> Create Assignment*
 
