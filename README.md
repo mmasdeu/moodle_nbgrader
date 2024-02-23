@@ -35,7 +35,7 @@ Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
    ```
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/nbgrader_config.py
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/header.ipynb -P source/
-   $ sage -n jupyter (s'obre una finestra/pestanya al navegador)
+   $ jupyter lab (s'obre una finestra/pestanya al navegador)
    ```
 
 3. Editem el fitxer `source/header.ipynb`, si volem.
@@ -44,7 +44,7 @@ Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
 6. Cliquem el llapis *Edit*
 7. Cliquem el nom  (a la columna *Name*)
 
-Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create Assignment*
+Es poden afegir nous fitxers de Sage/Python. Cal anar a *View -> Cell Toolbar -> Create Assignment*
 
 8. Cliquem el botó per Generar la tasca: *Generate*.
 9. El podem veure clicant a *Preview*.
