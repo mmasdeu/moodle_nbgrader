@@ -86,7 +86,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 11. Generem el fitxer de notes i el *zip* amb la retroacció:
 
    ```
-   $ ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
+   $ python ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
    ```
 
 11. A la carpeta `exports/` hi trobarem els fitxers:
