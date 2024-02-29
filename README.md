@@ -72,7 +72,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 
 6. Generem els fitxers per avaluar
 
-   `$ ~/moodle_nbgrader/moodle_nbgrader collect Examen`
+   `$ python ~/moodle_nbgrader/moodle_nbgrader collect Examen`
 
 7. Ara podem fer l'avaluació automàtica:
 
