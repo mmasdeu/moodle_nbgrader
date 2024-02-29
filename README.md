@@ -59,7 +59,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 ## Correcció de la tasca amb moodle_nbgrader
 
 1. Al Campus Virtual, cliquem a *Visualitza totes les trameses*.
-2. *Acció de qualificar* -> *Descarrega totes les trameses*. Cal habilitar l'opció **Descarrega les trameses en carpetes**.
+2. *Acció de qualificar* -> *Descarrega totes les trameses*. **Cal desactivar** l'opció **Descarrega les trameses en carpetes** (al final de la pàgina).
 3. Als *Paràmetres de la Tasca* hem d'habilitar, dins la secció *Tipus de retroacció* les caselles **Full de qualificació fora de línia** i **Fitxers de retroalimentació**, i desabilitar les altres dues (Comentaris de retroalimentació i PDF amb comentaris).
 4. També hem de baixar el full de qualificacions: *Descarrega el full de càlcul per qualificar*.
 5. Copiem l'arxiu .zip i el full a `imports/`:
@@ -72,7 +72,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 
 6. Generem els fitxers per avaluar
 
-   `$ ~/moodle_nbgrader/moodle_nbgrader collect Examen`
+   `$ python ~/moodle_nbgrader/moodle_nbgrader collect Examen`
 
 7. Ara podem fer l'avaluació automàtica:
 
@@ -86,7 +86,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 11. Generem el fitxer de notes i el *zip* amb la retroacció:
 
    ```
-   $ ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
+   $ python ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
    ```
 
 11. A la carpeta `exports/` hi trobarem els fitxers:
