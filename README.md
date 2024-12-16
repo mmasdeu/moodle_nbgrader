@@ -79,7 +79,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
    `$ nbgrader autograde Examen`
 
 8. Si cal, des de la interfície web fem la part manual de la correcció.
-9. Si no ho hem fet des de la interfícia web, podem generar els fitxers de retroacció amb la comanda següent:
+9. Si no ho hem fet des de la interfície web, podem generar els fitxers de retroacció amb la comanda següent:
 
    `$ nbgrader generate_feedback Examen`
    
