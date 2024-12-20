@@ -714,3 +714,12 @@ c.ClearSolutions.text_stub = 'ESCRIVIU LA RESPOSTA AQUÍ'
 #------------------------------------------------------------------------------
 # Feedback(GenerateFeedback) configuration
 #------------------------------------------------------------------------------
+## Uncomment the following lines to keep hidden tests hidden in feedback. Warning: it slows down *a lot* the feedback creation.
+
+# c.GenerateFeedback.preprocessors = [
+#      'nbgrader.preprocessors.GetGrades',
+#      'nbconvert.preprocessors.CSSHTMLHeaderPreprocessor',
+#      'nbgrader.preprocessors.ClearOutput',
+#      'nbgrader.preprocessors.ClearHiddenTests',
+#      'nbgrader.preprocessors.Execute',
+# ]

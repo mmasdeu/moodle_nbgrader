@@ -8,28 +8,10 @@ Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en
 
 ### Instal·lació de NBGrader
 
-  ```
-  $ sage -pip install --user nbgrader pdfkit fire
-  $ sage -jupyter nbextension install --user --py nbgrader --overwrite
-  $ sage -jupyter nbextension enable --user --py nbgrader
-  $ sage -jupyter serverextension enable --user --py nbgrader
-  ```
-
-**Nota:** si es vol, es pot desinstalar l'extensió que ho fa tot més automàtic (que jo no faig servir):
-
-  1. Desactivem *Assignment List*
-
-  ```
-  $ sage -jupyter nbextension disable --user assignment_list/main --section=tree
-  $ sage -jupyter serverextension disable --user nbgrader.server_extensions.assignment_list
-  ```
-
-  2. Desactivem *Course List*
-
-  ```
-  $ sage -jupyter nbextension disable --user course_list/main --section=tree
-  $ sage -jupyter serverextension disable --user nbgrader.server_extensions.course_list
-  ```
+Cal fer servir el gestor de paquets del sistema, per instal·lar els paquests *Python*: `nbgrader`, `pdfkit` i `fire`. Tambés es pot fer amb `conda` o `mamba`:
+```
+$ mamba install nbgrader pdfkit fire
+```
 
 ### Instal·lació de moodle_nbgrader
 
@@ -53,16 +35,16 @@ Aquests scripts ens serveixen per interactuar amb cursos del Moodle.
    ```
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/nbgrader_config.py
    $ wget https://raw.githubusercontent.com/mmasdeu/moodle_nbgrader/master/header.ipynb -P source/
-   $ sage -n jupyter (s'obre una finestra/pestanya al navegador)
+   $ jupyter lab (s'obre una finestra/pestanya al navegador)
    ```
 
 3. Editem el fitxer `source/header.ipynb`, si volem.
-4. Cliquem la pestanya *Formgrader* que ha aparegut.
+4. Cliquem el menú *NBgrader -> Formgrader* que ha aparegut.
 5. Cliquem *+ Add new assignment...* (**No feu servir espais al nom!**)
-6. Cliquem el llapis *Edit*
-7. Cliquem el nom  (a la columna *Name*)
+6. Cliquem el llapis *Edit* per fixar el nom (la data d'entrega no es fa servir)
+7. Cliquem el nom  (a la columna *Name*), i afegim un document de Jupyter (New launcher + botó SageMath).
 
-Es poden afegir nous fitxers de sage. Cal anar a *View -> Cell Toolbar -> Create Assignment*
+Es poden afegir nous fitxers de Sage/Python. Cal anar a *View -> Cell Toolbar -> Create Assignment*
 
 8. Cliquem el botó per Generar la tasca: *Generate*.
 9. El podem veure clicant a *Preview*.
@@ -77,7 +59,7 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 ## Correcció de la tasca amb moodle_nbgrader
 
 1. Al Campus Virtual, cliquem a *Visualitza totes les trameses*.
-2. *Acció de qualificar* -> *Descarrega totes les trameses*. Cal habilitar l'opció **Descarrega les trameses en carpetes**.
+2. *Acció de qualificar* -> *Descarrega totes les trameses*. **Cal desactivar** l'opció **Descarrega les trameses en carpetes** (al final de la pàgina).
 3. Als *Paràmetres de la Tasca* hem d'habilitar, dins la secció *Tipus de retroacció* les caselles **Full de qualificació fora de línia** i **Fitxers de retroalimentació**, i desabilitar les altres dues (Comentaris de retroalimentació i PDF amb comentaris).
 4. També hem de baixar el full de qualificacions: *Descarrega el full de càlcul per qualificar*.
 5. Copiem l'arxiu .zip i el full a `imports/`:
@@ -90,20 +72,24 @@ L'avaluació automàtica es pot fer com en el pas 7 de la secció següent.
 
 6. Generem els fitxers per avaluar
 
-   `$ sage -python ~/moodle_nbgrader/moodle_nbgrader collect Examen`
+   `$ python ~/moodle_nbgrader/moodle_nbgrader collect Examen`
 
 7. Ara podem fer l'avaluació automàtica:
 
-   `$ sage -python ~/.sage/local/bin/nbgrader autograde Examen`
+   `$ nbgrader autograde Examen`
 
 8. Si cal, des de la interfície web fem la part manual de la correcció.
-9. Generem el fitxer de notes i el de retroacció:
+9. Si no ho hem fet des de la interfície web, podem generar els fitxers de retroacció amb la comanda següent:
+
+   `$ nbgrader generate_feedback Examen`
+   
+11. Generem el fitxer de notes i el *zip* amb la retroacció:
 
    ```
-   $ sage -python ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
+   $ python ~/moodle_nbgrader/moodle_nbgrader gradesheet Examen
    ```
 
-10. A la carpeta `exports/` hi trobarem els fitxers:
+11. A la carpeta `exports/` hi trobarem els fitxers:
 
     - `exports/Examen.csv` -> Per pujar com *Puja un full de qualificació*.
     - `exports/Examen_feedback.zip` -> Per pujar com *Penja múltiples fitxers de retroacció en un zip*.
