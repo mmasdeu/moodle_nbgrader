@@ -10,7 +10,8 @@ Aquestes instruccions han estat adaptades de <https://nbgrader.readthedocs.io/en
 
 Cal fer servir el gestor de paquets del sistema, per instal·lar els paquests *Python*: `nbgrader`, `pdfkit` i `fire`. Tambés es pot fer amb `conda` o `mamba`:
 ```
-$ mamba install nbgrader pdfkit fire
+$ pip install pdfkit
+$ mamba install nbgrader fire 
 ```
 
 ### Instal·lació de moodle_nbgrader
